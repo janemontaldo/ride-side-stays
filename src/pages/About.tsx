@@ -26,9 +26,10 @@ export default function About() {
         className={`pt-16 pb-0 reveal-hidden ${heroSection.inView ? 'reveal-visible' : ''}`}
       >
         <Container className="pt-12">
-          <SectionLabel className="mb-10">Introduction</SectionLabel>
+         
           <p className="text-ink font-medium text-display-sm leading-[1.38] tracking-tight max-w-4xl mb-16">
-           Ride Side Stays offers thoughtfully chosen holiday stays in Australia and Europe, with a focus on relaxed comfort, beautiful locations, and easy booking. Our first property is in Lorne, Victoria, and more stays will be added over time.
+           Ride Side Stays offers thoughtfully chosen holiday stays in Australia and Europe, with a focus on relaxed comfort, 
+           beautiful locations, and easy booking. 
           </p>
         </Container>
       </section>
@@ -42,14 +43,20 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 lg:gap-16 py-14 lg:py-16">
             <div className="flex items-start gap-2 pt-1">
               <span className="w-1.5 h-1.5 rounded-full bg-ink-muted flex-shrink-0 mt-[6px]" />
-              <span className="text-sm text-ink-muted font-medium">Our mission</span>
+              <span className="text-sm text-ink-muted font-medium">The concept</span>
             </div>
             <div className="space-y-5 text-ink-soft text-base leading-relaxed">
               <p>
-              We built Ride Side Stays for travellers who enjoy the road as much as the destination. From motorcycle tours and road trips to relaxed breaks for couples and small groups, our stays are designed to feel welcoming, simple, and memorable.</p>
+              Ride Side Stays is a new and different holiday stay concept, offering relaxed, 
+              characterful homes in beautiful locations across Australia and Europe. 
+              These are not polished, standardised properties — they are real homes, owned and lived in by real people, 
+              with all the comfort, character, and occasional quirks that come with that.</p>
 
-<p>We aim to make planning easy, with clear property details, strong images, and a direct enquiry process that helps guests decide quickly and confidently.
-              </p>
+<p>Guests communicate directly with the owners, making the experience more personal and flexible. 
+  Depending on the property, you may book the whole home or just a room or two and share facilities with the owners.</p>
+
+<p>Our stays are especially suited to riders and like-minded travellers looking for somewhere authentic, comfortable, and easy to enjoy. </p>
+              
 
             </div>
           </div>
@@ -68,9 +75,7 @@ export default function About() {
               <span className="text-sm text-ink-muted font-medium">What we offer</span>
             </div>
             <div>
-              <p className="text-ink-soft text-base font-medium mb-5">
-                Scenic and memorable locations.
-              </p>
+           
               <ul className="space-y-2.5 text-ink-soft text-base leading-relaxed list-disc list-inside">
                 {highlights.map(item => (
                   <li key={item}>{item}</li>
