@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ContactForm from '../components/ContactForm';
 import PageWrapper from '../components/PageWrapper';
 import Container from '../components/Container';
-import SectionLabel from '../components/SectionLabel';
+/*import SectionLabel from '../components/SectionLabel';*/
 import { fetchProperties, type Property } from '../lib/supabase';
 import { useInView } from '../hooks/useInView';
 
@@ -23,7 +23,7 @@ export default function Contact() {
         className={`pt-16 pb-12 reveal-hidden ${headerSection.inView ? 'reveal-visible' : ''}`}
       >
         <Container className="pt-8">
-          <SectionLabel>Contact</SectionLabel>
+          
           <h1 className="text-ink font-bold text-display-lg leading-[1.06] tracking-tight max-w-2xl">
             Get in touch.
           </h1>

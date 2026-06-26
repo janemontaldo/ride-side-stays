@@ -3,7 +3,7 @@ import { AlertCircle } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import PageWrapper from '../components/PageWrapper';
 import Container from '../components/Container';
-import SectionLabel from '../components/SectionLabel';
+/*import SectionLabel from '../components/SectionLabel';*/
 import { fetchProperties, type Property } from '../lib/supabase';
 import { useInView } from '../hooks/useInView';
 
@@ -30,7 +30,7 @@ export default function Properties() {
         className={`pt-16 pb-12 lg:pb-16 reveal-hidden ${headerSection.inView ? 'reveal-visible' : ''}`}
       >
         <Container className="pt-8">
-          <SectionLabel>Properties</SectionLabel>
+          
           <h1 className="text-ink font-bold text-display-lg leading-[1.06] tracking-tight max-w-3xl">
             Handpicked stays in great locations.
           </h1>
