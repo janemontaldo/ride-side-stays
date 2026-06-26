@@ -10,7 +10,7 @@ const highlights = [
   'Comfortable holiday accommodation.',
   'Suitable for riders, couples, and small groups.',
   'Simple enquiry process with direct contact.',
-  'A growing collection of stays across Australia and Europe.',
+  'A small collection of stays across Australia and Europe.',
 ];
 
 export default function About() {
