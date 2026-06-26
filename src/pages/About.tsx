@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageWrapper from '../components/PageWrapper';
 import Container from '../components/Container';
-import SectionLabel from '../components/SectionLabel';
+/*import SectionLabel from '../components/SectionLabel';*/
 import { useInView } from '../hooks/useInView';
 
 const highlights = [
