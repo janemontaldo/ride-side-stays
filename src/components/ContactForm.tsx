@@ -16,7 +16,7 @@ const initialState = { name: '', email: '', phone: '', message: '', property_int
 // emailed to that address), then paste it below in place of the PASTE_… text.
 // The key is safe to keep in the code. To add more recipients later, add more keys here.
 const WEB3FORMS_ACCESS_KEYS: string[] = [
-  '37a95d75-2a2e-443f-995f-70f4207aa673_janemontaldo@gmail.com',
+  '37a95d75-2a2e-443f-995f-70f4207aa673',
 ];
 
 type EnquiryPayload = {
