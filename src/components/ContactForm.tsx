@@ -9,6 +9,50 @@ interface Props {
 
 const initialState = { name: '', email: '', phone: '', message: '', property_interest: '' };
 
+// ── Email notifications via Web3Forms ─────────────────────────────────────────
+// Every enquiry is emailed to the site master (janemontaldo@gmail.com). Owners handle
+// their own rentals via the direct emails shown on each listing.
+// Get a free key at https://web3forms.com (enter janemontaldo@gmail.com; the key is
+// emailed to that address), then paste it below in place of the PASTE_… text.
+// The key is safe to keep in the code. To add more recipients later, add more keys here.
+const WEB3FORMS_ACCESS_KEYS: string[] = [
+  '37a95d75-2a2e-443f-995f-70f4207aa673_janemontaldo@gmail.com',
+];
+
+type EnquiryPayload = {
+  name: string;
+  email: string;
+  phone?: string;
+  message: string;
+  property_interest?: string;
+};
+
+async function sendEnquiryEmails(data: EnquiryPayload) {
+  const keys = WEB3FORMS_ACCESS_KEYS.filter(k => k && !k.startsWith('PASTE_'));
+  if (keys.length === 0) return; // no keys set yet — skip email, form still saves to Supabase
+  await Promise.all(
+    keys.map(async access_key => {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key,
+          subject: `New enquiry — ${data.property_interest || 'Ride Side Stays'}`,
+          from_name: 'Ride Side Stays website',
+          replyto: data.email,
+          name: data.name,
+          email: data.email,
+          phone: data.phone || 'Not provided',
+          property_interest: data.property_interest || 'Not specified',
+          message: data.message,
+        }),
+      });
+      const result = await res.json();
+      if (!result.success) throw new Error(result.message || 'Email send failed');
+    })
+  );
+}
+
 const fieldClass = (error: boolean) =>
   `w-full px-4 py-3 rounded-xl border text-sm text-ink placeholder-ink-faint bg-cream transition-colors focus:outline-none focus:ring-2 focus:ring-ink/20 focus:border-ink/40 ${
     error ? 'border-red-400 bg-red-50' : 'border-cream-400'
@@ -34,14 +78,20 @@ export default function ContactForm({ prefilledProperty, propertyOptions }: Prop
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setStatus('submitting');
+
+    const payload = {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim() || undefined,
+      message: form.message.trim(),
+      property_interest: form.property_interest || undefined,
+    };
+
     try {
-      await submitEnquiry({
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim() || undefined,
-        message: form.message.trim(),
-        property_interest: form.property_interest || undefined,
-      });
+      // Email the enquiry to the team (primary goal).
+      await sendEnquiryEmails(payload);
+      // Also store it in Supabase as a record — best effort, don't fail the form if this errors.
+      submitEnquiry(payload).catch(() => {});
       setStatus('success');
       setForm({ ...initialState, property_interest: prefilledProperty ?? '' });
     } catch {

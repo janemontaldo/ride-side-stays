@@ -68,7 +68,7 @@ Riders are well looked after: a secure garage for the bikes, plus a Moto Guzzi N
     '/images/properties/eymet/exterior-1.jpg',
     '/images/properties/eymet/exterior-2.jpg',
     '/images/properties/eymet/garage-1.jpg',
-     '/images/properties/eymet/garage-2.jpg',
+    '/images/properties/eymet/garage-2.jpg',
     '/images/properties/eymet/eymet-and-surrounds-1.jpg',
     '/images/properties/eymet/eymet-and-surrounds-2.jpg',
     '/images/properties/eymet/eymet-and-surrounds-3.jpg',
